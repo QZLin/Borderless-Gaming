@@ -14,7 +14,7 @@ namespace BorderlessGaming.Logic.System
     {
         public static string Path = Assembly.GetEntryAssembly().Location;
         public static string LanguagePath = global::System.IO.Path.Combine(DataPath, "Languages");
-        public static string ConfigPath = global::System.IO.Path.Combine(DataPath, "config.bin");
+        public static string ConfigPath = global::System.IO.Path.Combine(DataPath, "config.json");
 
         public static string DataPath
         {

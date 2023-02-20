@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Security.Cryptography;
+using System.Text.Json;
 using BorderlessGaming.Logic.Models;
 using BorderlessGaming.Logic.System;
 using ProtoBuf;
@@ -8,7 +9,7 @@ namespace BorderlessGaming.Logic.Windows
 {
     public static class Security
     {
-        private static readonly byte[] Salt = {0x33, 0x92, 0x91, 0x12, 0x28, 0x19};
+        private static readonly byte[] Salt = { 0x33, 0x92, 0x91, 0x12, 0x28, 0x19 };
 
         public static byte[] Encrypt(byte[] plainText)
         {
@@ -26,11 +27,9 @@ namespace BorderlessGaming.Logic.Windows
         /// <param name="instance"></param>
         public static void SaveConfig(Config instance)
         {
-            using (var memoryStream = new MemoryStream())
-            {
-                Serializer.Serialize(memoryStream, instance);
-                File.WriteAllBytes(AppEnvironment.ConfigPath, memoryStream.ToArray());
-            }
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            string jsonString = JsonSerializer.Serialize(instance, options);
+            File.WriteAllText(AppEnvironment.ConfigPath, jsonString);
         }
 
 
@@ -38,10 +37,9 @@ namespace BorderlessGaming.Logic.Windows
         {
             try
             {
-                using (var memoryStream = new MemoryStream(File.ReadAllBytes(AppEnvironment.ConfigPath)))
-                {
-                    return Serializer.Deserialize<Config>(memoryStream);
-                }
+                var text = File.ReadAllText(AppEnvironment.ConfigPath);
+                var config = JsonSerializer.Deserialize<Config>(text);
+                return config;
             }
             catch (global::System.Exception)
             {
