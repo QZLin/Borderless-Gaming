@@ -440,10 +440,14 @@ namespace BorderlessGaming.Logic.Windows
                     }
                     uint processId;
                     GetWindowThreadProcessId(ptr, out processId);
-                    callback(new ProcessDetails(Process.GetProcessById((int)processId), ptr)
+                    try //TODO
                     {
-                        Manageable = true
-                    });
+                        callback(new ProcessDetails(Process.GetProcessById((int)processId), ptr)
+                        {
+                            Manageable = true
+                        });
+                    }
+                    catch (ArgumentException) { }
                 }
             }
         }
