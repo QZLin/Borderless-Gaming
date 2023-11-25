@@ -69,10 +69,10 @@ namespace BorderlessGaming.Logic.System
             }
             Config.Load();
             LanguageManager.Load();
-            if (!Config.Instance.AppSettings.DisableSteamIntegration)
-            {
-                SteamApi.Init();
-            }
+            //if (!Config.Instance.AppSettings.DisableSteamIntegration)
+            //{
+            //    SteamApi.Init();
+            //}
         }
 
         public static Rectangle GetContainingRectangle(Rectangle a, Rectangle b)

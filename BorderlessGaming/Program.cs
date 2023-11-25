@@ -23,10 +23,10 @@ namespace BorderlessGaming
             Application.SetCompatibleTextRenderingDefault(false);
             Tools.Setup();
             //use github updating for non-steam
-            if (!Config.Instance.StartupOptions.IsSteam && Config.Instance.AppSettings.CheckForUpdates)
-            {
-                Tools.CheckForUpdates();
-            }
+            //if (!Config.Instance.StartupOptions.IsSteam && Config.Instance.AppSettings.CheckForUpdates)
+            //{
+            //    Tools.CheckForUpdates();
+            //}
             ForegroundManager.Subscribe();
             Application.Run(new MainWindow());
           
