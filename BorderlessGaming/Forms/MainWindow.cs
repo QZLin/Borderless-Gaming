@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
@@ -479,6 +480,19 @@ namespace BorderlessGaming.Forms
             {
                 lstFavorites.Items.Add(fav);
             });
+        }
+        private void CompleteRefreshFavoritesList()
+        {
+            var tempList = new ArrayList();
+            foreach (var item in lstFavorites.Items) tempList.Add(item);
+            lstFavorites.Items.Clear();
+            foreach (var item in tempList) lstFavorites.Items.Add(item);
+        }
+        private void CompleteRefreshFavoritesList(object targetObj)
+        {
+            var index = lstFavorites.Items.IndexOf(targetObj);
+            lstFavorites.Items.Remove(targetObj);
+            lstFavorites.Items.Insert(index, targetObj);
         }
 
         /// <summary>
@@ -1229,6 +1243,36 @@ fav.PositionX.ToString()), out int favPositionX);
         private void checkOutRainwayToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Tools.GotoSite("https://rainway.io/?ref=borderlessgaming3");
+        }
+
+        // TODO: Update config
+        private void ToolStripMenuItemEditSearchText_Click(object sender, EventArgs e)
+        {
+            var fav = lstFavorites.SelectedItem as Favorite;
+            var res = InputText("Edit Search Text", "Edit", fav.SearchText);
+            fav.SearchText = res;
+            CompleteRefreshFavoritesList(fav);
+        }
+
+        private void imageNameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fav = (Favorite)lstFavorites.SelectedItem;
+            fav.Type = FavoriteType.Process;
+            CompleteRefreshFavoritesList();
+        }
+
+        private void windowTitleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fav = (Favorite)lstFavorites.SelectedItem;
+            fav.Type = FavoriteType.Title;
+            CompleteRefreshFavoritesList();
+        }
+
+        private void titleRegexToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fav = (Favorite)lstFavorites.SelectedItem;
+            fav.Type = FavoriteType.Regex;
+            CompleteRefreshFavoritesList();
         }
     }
 }

@@ -65,6 +65,11 @@ namespace BorderlessGaming.Forms
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMuteInBackground = new System.Windows.Forms.ToolStripMenuItem();
             this.contextRemoveFromFavs = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemEditSearchText = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemChangeType = new System.Windows.Forms.ToolStripMenuItem();
+            this.imageNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.windowTitleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.titleRegexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnRemoveFavorite = new System.Windows.Forms.Button();
             this.processLabel = new System.Windows.Forms.Label();
             this.favoritesLabel = new System.Windows.Forms.Label();
@@ -264,7 +269,9 @@ namespace BorderlessGaming.Forms
             this.toolStripMenuItem9,
             this.contextFavScreen,
             this.toolStripMuteInBackground,
-            this.contextRemoveFromFavs});
+            this.contextRemoveFromFavs,
+            this.toolStripMenuItemEditSearchText,
+            this.toolStripMenuItemChangeType});
             this.mnuFavoritesContext.Name = "mnuFavoritesRightClick";
             this.mnuFavoritesContext.Opening += new System.ComponentModel.CancelEventHandler(this.mnuFavoritesContext_Opening);
             // 
@@ -375,6 +382,44 @@ namespace BorderlessGaming.Forms
             this.contextRemoveFromFavs.Name = "contextRemoveFromFavs";
             this.contextRemoveFromFavs.Text = LanguageManager.Data("contextRemoveFromFavs");
             this.contextRemoveFromFavs.Click += new System.EventHandler(this.btnRemoveFavorite_Click);
+            // 
+            // toolStripMenuItemEditSearchText
+            // 
+            this.toolStripMenuItemEditSearchText.Name = "toolStripMenuItemEditSearchText";
+            resources.ApplyResources(this.toolStripMenuItemEditSearchText, "toolStripMenuItemEditSearchText");
+            this.toolStripMenuItemEditSearchText.Text = "Edit Search Text";
+            this.toolStripMenuItemEditSearchText.Click += new System.EventHandler(this.ToolStripMenuItemEditSearchText_Click);
+            // 
+            // toolStripMenuItemChangeType
+            // 
+            this.toolStripMenuItemChangeType.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.imageNameToolStripMenuItem,
+            this.windowTitleToolStripMenuItem,
+            this.titleRegexToolStripMenuItem});
+            this.toolStripMenuItemChangeType.Name = "toolStripMenuItemChangeType";
+            resources.ApplyResources(this.toolStripMenuItemChangeType, "toolStripMenuItemChangeType");
+            this.toolStripMenuItemChangeType.Text = "Change Match Type";
+            // 
+            // imageNameToolStripMenuItem
+            // 
+            this.imageNameToolStripMenuItem.Name = "imageNameToolStripMenuItem";
+            resources.ApplyResources(this.imageNameToolStripMenuItem, "imageNameToolStripMenuItem");
+            this.imageNameToolStripMenuItem.Click += new System.EventHandler(this.imageNameToolStripMenuItem_Click);
+            this.imageNameToolStripMenuItem.Text = "Process Name";
+            // 
+            // windowTitleToolStripMenuItem
+            // 
+            this.windowTitleToolStripMenuItem.Name = "windowTitleToolStripMenuItem";
+            resources.ApplyResources(this.windowTitleToolStripMenuItem, "windowTitleToolStripMenuItem");
+            this.windowTitleToolStripMenuItem.Click += new System.EventHandler(this.windowTitleToolStripMenuItem_Click);
+            this.windowTitleToolStripMenuItem.Text = "Window Title";
+            // 
+            // titleRegexToolStripMenuItem
+            // 
+            this.titleRegexToolStripMenuItem.Name = "titleRegexToolStripMenuItem";
+            resources.ApplyResources(this.titleRegexToolStripMenuItem, "titleRegexToolStripMenuItem");
+            this.titleRegexToolStripMenuItem.Click += new System.EventHandler(this.titleRegexToolStripMenuItem_Click);
+            this.titleRegexToolStripMenuItem.Text = "Title Regex";
             // 
             // btnRemoveFavorite
             // 
@@ -851,5 +896,10 @@ namespace BorderlessGaming.Forms
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem13;
         private System.Windows.Forms.ToolStripMenuItem toolStripMuteInBackground;
         private System.Windows.Forms.ToolStripMenuItem toolStripLanguages;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemEditSearchText;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemChangeType;
+        private System.Windows.Forms.ToolStripMenuItem imageNameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem windowTitleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem titleRegexToolStripMenuItem;
     }
 }
