@@ -26,7 +26,7 @@ namespace BorderlessGaming.Logic.Models
         internal string Data(string key)
         {
           
-            return LanguageData.ContainsKey(key) ? LanguageData[key] : null;
+            return LanguageData.ContainsKey(key) ? LanguageData[key] : key;
         }
 
         public void LoadData(string languageFile)
