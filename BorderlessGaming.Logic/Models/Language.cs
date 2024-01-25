@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using BorderlessGaming.Logic.Core;
+using YamlDotNet;
 
 namespace BorderlessGaming.Logic.Models
 {
@@ -31,8 +32,11 @@ namespace BorderlessGaming.Logic.Models
 
         public void LoadData(string languageFile)
         {
-            LanguageData = new Dictionary<string, string>();
-            foreach (var line in File.ReadAllLines(languageFile, Encoding.UTF8))
+            //LanguageData = new Dictionary<string, string>();
+            var deserializer = new YamlDotNet.Serialization.Deserializer();
+            LanguageData = deserializer.Deserialize<Dictionary<string, string>>(File.ReadAllText(languageFile,Encoding.UTF8));
+
+            /*foreach (var line in File.ReadAllLines(languageFile, Encoding.UTF8))
             {
                 if (string.IsNullOrWhiteSpace(line))
                 {
@@ -50,7 +54,7 @@ namespace BorderlessGaming.Logic.Models
                 {
                     LanguageData.Add(key, data);
                 }
-            }
+            }*/
             if (LanguageData.Count > 0)
             {
                 DisplayName = CultureDisplayName(Culture);

@@ -41,7 +41,7 @@ namespace BorderlessGaming.Logic.Core
 
         public static string Data(string key)
         {
-            key = key.ToLower();
+            //key = key.ToLower();
             var lang = Languages[CurrentCulture];
             var data = lang.Data(key);
             if (string.IsNullOrWhiteSpace(data))
@@ -78,18 +78,18 @@ namespace BorderlessGaming.Logic.Core
                 MessageBox.Show("UI Translations are missing from disk.");
                 Environment.Exit(1);
             }
-            foreach (var langFile in Directory.GetFiles(AppEnvironment.LanguagePath, "*.lang"))
+            foreach (var langFile in Directory.GetFiles(AppEnvironment.LanguagePath, "*.yaml"))
             {
                 var culture = Path.GetFileNameWithoutExtension(langFile);
-                if (culture != null && CultureExists(culture) && !Languages.ContainsKey(culture))
-                {
+                //if (culture != null && CultureExists(culture) && !Languages.ContainsKey(culture))
+                //{
                     var lang = new Language {Culture = culture};
                     lang.LoadData(langFile);
                     if (lang.LanguageData != null)
                     {
                         Languages.Add(culture, lang);
                     }
-                }
+                //}
             }
             if (Languages.Count <= 0)
             {

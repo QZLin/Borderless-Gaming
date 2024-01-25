@@ -13,7 +13,11 @@ namespace BorderlessGaming.Logic.System
     public class AppEnvironment
     {
         public static string Path = Assembly.GetEntryAssembly().Location;
+#if DEBUG
+        public static string LanguagePath = @"..\..\..\Languages";
+#else
         public static string LanguagePath = global::System.IO.Path.Combine(DataPath, "Languages");
+#endif
         public static string ConfigPath = global::System.IO.Path.Combine(DataPath, "config.json");
 
         public static string DataPath
