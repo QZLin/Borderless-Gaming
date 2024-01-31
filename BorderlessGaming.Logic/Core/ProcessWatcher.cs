@@ -62,7 +62,7 @@ namespace BorderlessGaming.Logic.Core
                 if (AutoHandleFavorites)
                 {
                     // check favorites against the cache
-                    foreach (var pd in Processes)
+                    foreach (var pd in Processes.ToArray())
                     {
                         try
                         {
