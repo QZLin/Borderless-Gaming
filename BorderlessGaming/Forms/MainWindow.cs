@@ -483,16 +483,24 @@ namespace BorderlessGaming.Forms
         }
         private void CompleteRefreshFavoritesList()
         {
-            var tempList = new ArrayList();
-            foreach (var item in lstFavorites.Items) tempList.Add(item);
-            lstFavorites.Items.Clear();
-            foreach (var item in tempList) lstFavorites.Items.Add(item);
+            Action action = delegate
+            {
+                var tempList = new ArrayList();
+                foreach (var item in lstFavorites.Items) tempList.Add(item);
+                lstFavorites.Items.Clear();
+                foreach (var item in tempList) lstFavorites.Items.Add(item);
+            };
+            lstFavorites.Invoke(action);
         }
         private void CompleteRefreshFavoritesList(object targetObj)
         {
-            var index = lstFavorites.Items.IndexOf(targetObj);
-            lstFavorites.Items.Remove(targetObj);
-            lstFavorites.Items.Insert(index, targetObj);
+            Action action = delegate
+            {
+                var index = lstFavorites.Items.IndexOf(targetObj);
+                lstFavorites.Items.Remove(targetObj);
+                lstFavorites.Items.Insert(index, targetObj);
+            };
+            lstFavorites.Invoke(action);
         }
 
         /// <summary>
